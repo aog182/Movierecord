@@ -1,4 +1,4 @@
-package com.example.pr_idi.mydatabaseexample;
+package com.example.pr_idi.movierecord;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

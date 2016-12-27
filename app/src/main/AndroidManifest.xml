@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pr_idi.mydatabaseexample">
+    package="com.example.pr_idi.movierecord">
 
     <application
         android:allowBackup="true"
