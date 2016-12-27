@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="a370c24ac57480571d5f0720350733113c5be511">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_cb74b31e522dc5ddf25dc504285f0c0973bf8e52\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-22.2.1_b11e3145f0d2c354c680ed26049aeb90e08adc5b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="a971807627341a359d79f02bfc793ea1379507b7">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_04a95bf2d077369c93c303ca6860fafb731add06\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-22.2.1_f18898346c556e57aa5ee6c1a5a84575cdcd1b2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-22.2.1_0a03dc1e5eddf4c9687e99e7f4773d8ae3964b28\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Arnau\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\Arnau\Desktop\FIB\idi3\MyFilmDatabase\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.2.1_158d8fbd905809efe60d5a92b5c2b743a721bbf9\classes.dex" />
+    </item>
+
+</items>
