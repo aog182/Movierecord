@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single" android:title="ORDENAT PER">
+        <item
+            android:id="@+id/nav_titol"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Titol" />
+        <item
+            android:id="@+id/nav_actor"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Actor" />
+        <item
+            android:id="@+id/nav_anyestrena"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Any estrena" />
+    </group>
+
+    <item android:title="Informació">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_menu_share"
+                android:title="About" />
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Help" />
+        </menu>
+    </item>
+
+</menu>

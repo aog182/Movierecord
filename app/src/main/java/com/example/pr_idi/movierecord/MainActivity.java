@@ -6,11 +6,16 @@ import java.util.Random;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 public class MainActivity extends ListActivity {
     private FilmData filmData;
+    Film film;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,9 +30,39 @@ public class MainActivity extends ListActivity {
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
         ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, values);
+                android.R.layout.list_content, values);
         setListAdapter(adapter);
     }
+    public void onCreateContextMenu(ContextMenu menu, View view,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+        // super.onCreateContextMenu(menu, v, menuInfo)
+
+        film = (Film) getListAdapter().getItem(0);
+
+
+            menu.setHeaderTitle(film.getTitle());
+            menu.add(Menu.NONE, 1, 1, "Modificar");
+            menu.add(Menu.NONE, 2, 2, "Esborrar");
+            //pos = info.position;
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        ArrayAdapter<Film> adapter = (ArrayAdapter<Film>) getListAdapter();
+        int menuItemIndex = item.getItemId();
+        if (menuItemIndex == 1) { //modificar dades film
+
+        }
+        else if (menuItemIndex == 2) { //esborrar element
+            filmData.deleteFilm(film);
+            adapter.remove(film);
+        }
+
+        adapter.notifyDataSetChanged();
+        return true;
+    }
+
+
 
     // Will be called via the onClick attribute
     // of the buttons in main.xml
