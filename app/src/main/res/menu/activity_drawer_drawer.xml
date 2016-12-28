@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="ORDENAR PER">
+        <menu>
+            <item
+                android:id="@+id/nav_titol"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Titol" />
+            <item
+                android:id="@+id/nav_actor"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Actor" />
+            <item
+                android:id="@+id/nav_anyestrena"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Any estrena" />
+        </menu>
+    </item>
 
-    <group android:checkableBehavior="single" android:title="ORDENAT PER">
-        <item
-            android:id="@+id/nav_titol"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Titol" />
-        <item
-            android:id="@+id/nav_actor"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Actor" />
-        <item
-            android:id="@+id/nav_anyestrena"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Any estrena" />
-    </group>
 
     <item android:title="Informació">
         <menu>

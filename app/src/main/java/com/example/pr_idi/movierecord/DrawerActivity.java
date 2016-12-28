@@ -1,11 +1,14 @@
 package com.example.pr_idi.movierecord;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -41,6 +44,9 @@ public class DrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
     }
 
     @Override
@@ -82,21 +88,44 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
 
-        if (id == R.id.nav_titol) {
+        Fragment newFragment;
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+             if (id == R.id.nav_titol) {
            // Handle the camera action
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new titol());
+           // fragmentManager.beginTransaction().replace(R.id.content_frame,new titol());
+            newFragment = new titol();
+            transaction.replace(R.id.content_frame, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            Log.v("1", String.valueOf("apretem titol"));
         } else if (id == R.id.nav_actor) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new actor());
-
+            //fragmentManager.beginTransaction().replace(R.id.content_drawer,new titol());
+                 newFragment = new actor();
+                 transaction.replace(R.id.content_frame, newFragment);
+                 transaction.addToBackStack(null);
+                 transaction.commit();
+            Log.v("2", String.valueOf("apretem actor"));
         } else if (id == R.id.nav_anyestrena) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new anyestrena());
-
+            //fragmentManager.beginTransaction().replace(R.id.content_frame,new anyestrena());
+                 newFragment = new anyestrena();
+                 transaction.replace(R.id.content_frame, newFragment);
+                 transaction.addToBackStack(null);
+                 transaction.commit();
+            Log.v("3", String.valueOf("apretem any"));
         } else if (id == R.id.nav_about) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new about());
-
+            //fragmentManager.beginTransaction().replace(R.id.content_frame,new about());
+                 newFragment = new about();
+                 transaction.replace(R.id.content_frame, newFragment);
+                 transaction.addToBackStack(null);
+                 transaction.commit();
         } else if (id == R.id.nav_help) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new help());
-        }
+           // fragmentManager.beginTransaction().replace(R.id.content_frame,new help());
+                 newFragment = new help();
+                 transaction.replace(R.id.content_frame, newFragment);
+                 transaction.addToBackStack(null);
+                 transaction.commit();
+             }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

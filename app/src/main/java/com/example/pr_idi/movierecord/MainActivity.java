@@ -36,7 +36,6 @@ public class MainActivity extends ListActivity {
     public void onCreateContextMenu(ContextMenu menu, View view,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        // super.onCreateContextMenu(menu, v, menuInfo)
 
         film = (Film) getListAdapter().getItem(0);
 
