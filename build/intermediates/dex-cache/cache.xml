@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="f9716b7cbfc6796d6460b049a0784eb4f1a60a31">
+        sha1="b6d84da1c81c144e8c9d7188d9e98d42fbfada14">
         <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6734179417c7b740e68fea225d99129428ade8dc\classes.dex" />
     </item>
     <item
@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
-        sha1="7d260d9b8b66d352387820bcafdde4d4a4e734d6">
+        sha1="7c05f39282dc22c6629416c5203f041ea0d0f8ef">
         <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b72f1689abc6747bdc6f9ca4b47a18dc0eb2111e\classes.dex" />
     </item>
     <item

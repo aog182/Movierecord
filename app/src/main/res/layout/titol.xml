@@ -2,15 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <EditText
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listtitol"
+        android:layout_alignParentStart="true"
+        android:paddingTop="0dp"
+        android:layout_marginTop="75dp" />
+
+    <TextView
+        android:text="ORDENAT PER TITOL"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="ordenat  TITOL"
-        android:ems="10"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:id="@+id/editText" />
+        android:layout_marginStart="111dp"
+        android:id="@+id/text1"
+        android:layout_marginTop="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/abc_input_method_navigation_guard"
+        android:layout_height="30dp" />
 
 </RelativeLayout>

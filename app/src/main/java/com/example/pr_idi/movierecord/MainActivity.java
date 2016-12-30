@@ -14,8 +14,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 public class MainActivity extends ListActivity {
-    private FilmData filmData;
-    Film film;
+        private FilmData filmData;
+        Film film;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends ListActivity {
         // use the SimpleCursorAdapter to show the
         // elements in a ListView
         ArrayAdapter<Film> adapter = new ArrayAdapter<>(this,
-                android.R.layout.list_content, values);
+                android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
     }
     public void onCreateContextMenu(ContextMenu menu, View view,
