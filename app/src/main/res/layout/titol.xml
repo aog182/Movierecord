@@ -2,23 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listtitol"
         android:layout_alignParentStart="true"
         android:paddingTop="0dp"
-        android:layout_marginTop="75dp" />
+        android:layout_below="@+id/txtsearch" />
 
-    <TextView
-        android:text="ORDENAT PER TITOL"
+    <EditText
         android:layout_width="wrap_content"
-        android:layout_marginStart="111dp"
-        android:id="@+id/text1"
-        android:layout_marginTop="18dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Cerca Actor"
+        android:ems="10"
+        android:id="@+id/txtsearch"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/abc_input_method_navigation_guard"
-        android:layout_height="30dp" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
