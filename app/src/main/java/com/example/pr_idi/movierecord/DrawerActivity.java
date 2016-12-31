@@ -105,13 +105,7 @@ public class DrawerActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
             Log.v("1", String.valueOf("apretem titol"));
-        } else if (id == R.id.nav_actor) {
-            //fragmentManager.beginTransaction().replace(R.id.content_drawer,new titol());
-                 newFragment = new actor();
-                 transaction.replace(R.id.content_frame, newFragment);
-                 transaction.addToBackStack(null);
-                 transaction.commit();
-            Log.v("2", String.valueOf("apretem actor"));
+
         } else if (id == R.id.nav_anyestrena) {
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new anyestrena());
                  newFragment = new anyestrena();
