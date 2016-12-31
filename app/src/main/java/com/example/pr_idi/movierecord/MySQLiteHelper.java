@@ -34,6 +34,26 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_CRITICS_RATE + " integer"
             + ");";
 
+    private static final String DATABASE_INSERT1 = "insert into " + TABLE_FILMS
+            + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
+            + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
+            + ") values ('The Apartment','USA',1960,'Billy Wilder','Jack Lemmon',5);";
+
+    private static final String DATABASE_INSERT2 = "insert into " + TABLE_FILMS
+            + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
+            + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
+            + ") values ('A Monster Calls','Spain',2016,'J.A. Bayona','Sigourney Weaver',2);";
+
+    private static final String DATABASE_INSERT3 = "insert into " + TABLE_FILMS
+            + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
+            + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
+            + ") values ('Mommy','Canada',2014,'Xavier Dolan','Anne Dorval',4);";
+
+    private static final String DATABASE_INSERT4 = "insert into " + TABLE_FILMS
+            + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
+            + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
+            + ") values ('Pulp Fiction','USA',1994,'Quentin Tarantino','John Travolta',5);";
+
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -41,6 +61,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+        database.execSQL(DATABASE_INSERT1);
+        database.execSQL(DATABASE_INSERT2);
+        database.execSQL(DATABASE_INSERT3);
+        database.execSQL(DATABASE_INSERT4);
     }
 
     @Override
