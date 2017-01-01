@@ -35,7 +35,7 @@ public class titol extends Fragment {
         myView = inflater.inflate(R.layout.titol,container,false);
         Log.v("1", String.valueOf("estem a titol"));
 
-        ListView listView = (ListView) myView.findViewById(R.id.listtitol);
+        listView = (ListView) myView.findViewById(R.id.listtitol);
         editText = (EditText) myView.findViewById(R.id.txtsearch);
 
         filmData = new FilmData(getActivity().getApplicationContext()); //context de l'activitat superior
@@ -92,7 +92,7 @@ public class titol extends Fragment {
 
     void datainicial(){
         values = filmData.getAllFilmstitol();
-        listViewAdapter = new ArrayAdapter<Film>(getActivity().getApplicationContext(),
+        listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 R.layout.list_item,R.id.txtitem, values);
 
         listView.setAdapter(listViewAdapter);
