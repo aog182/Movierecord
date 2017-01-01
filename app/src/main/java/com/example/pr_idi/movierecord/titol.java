@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,8 +26,11 @@ public class titol extends Fragment {
     Film film;
     ListView listView; //llista que somplira amb la query
     EditText editText;//quadre de text de la cerca
-    ArrayAdapter<Film> listViewAdapter; //Adaptador de la listview
-    List<Film> values; //lista de valors que posem a la listview
+    ArrayAdapter<String> listViewAdapter; //Adaptador de la listview
+    List<Film> values = new ArrayList<>(); //lista de valors que posem a la listview
+    List<String> titols = new ArrayList<>();
+    List<String> pelis = new ArrayList<>();
+
 
 
     @Nullable
@@ -54,6 +58,7 @@ public class titol extends Fragment {
                 if (s.toString().equals("")){
                     //totes les pelis sense filtre
                     datainicial();
+                    //listViewAdapter.notifyDataSetChanged();
                 }
             }
 
@@ -69,12 +74,14 @@ public class titol extends Fragment {
 
     public void buscarelement(String textabuscar){
         int i = 0;
-        String item;
+        String nomactor;
         while(i < values.size()) {
-            item = values.get(i).getProtagonist();
-            if (!item.contains(textabuscar)) values.remove(item);
+            nomactor =  values.get(i).getProtagonist();
+            film = values.get(i);
+            if (!nomactor.contains(textabuscar)) values.remove(film);
             ++i;
         }
+        nomestitols();
         listViewAdapter.notifyDataSetChanged();
     }
 
@@ -92,10 +99,22 @@ public class titol extends Fragment {
 
     void datainicial(){
         values = filmData.getAllFilmstitol();
+        nomestitols();
         listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
-                R.layout.list_item,R.id.txtitem, values);
+                R.layout.list_item,R.id.txtitem, titols);
 
         listView.setAdapter(listViewAdapter);
+    }
+
+    void nomestitols(){
+        titols.clear();
+        int i = 0;
+        String titolpeli;
+        while(i < values.size()){
+            titolpeli = values.get(i).getTitle();
+            titols.add(i,titolpeli);
+            ++i;
+        }
     }
 
 }
