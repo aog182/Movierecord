@@ -3,14 +3,20 @@ package com.example.pr_idi.movierecord;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -29,7 +35,6 @@ public class titol extends Fragment {
     ArrayAdapter<String> listViewAdapter; //Adaptador de la listview
     List<Film> values = new ArrayList<>(); //lista de valors que posem a la listview
     List<String> titols = new ArrayList<>();
-    List<String> pelis = new ArrayList<>();
 
 
 
@@ -104,6 +109,7 @@ public class titol extends Fragment {
                 R.layout.list_item,R.id.txtitem, titols);
 
         listView.setAdapter(listViewAdapter);
+        registerForContextMenu(listView);
     }
 
     void nomestitols(){
@@ -117,4 +123,40 @@ public class titol extends Fragment {
         }
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, view, menuInfo);
+
+        menu.setHeaderIcon(R.drawable.ic_menu_manage);
+        menu.setHeaderTitle("EDITAR");
+        menu.add(Menu.NONE, 0, menu.NONE, "Modificar critica");
+        menu.add(Menu.NONE, 1, menu.NONE, "Esborrar");
+
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case 0:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity().getApplicationContext());
+                builder.setTitle("EDITAR CRITICA");
+
+                LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                final EditText txtcritica = new EditText(getActivity().getApplicationContext());
+               // txtcritica.setText();
+                txtcritica .setInputType(InputType.TYPE_CLASS_NUMBER);
+                txtcritica .setHint("Puntuació de l'1 al 5");
+                layout.addView(txtcritica );
+
+                builder.setView(layout);
+                break;
+            case 1:
+                //TODO: codi d'esborrar la peli
+                break;
+        }
+
+        return super.onContextItemSelected(item);
+    }
 }
+

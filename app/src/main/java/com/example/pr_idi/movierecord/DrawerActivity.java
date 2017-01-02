@@ -22,6 +22,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import java.util.List;
+
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,6 +50,7 @@ public class DrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 dialogAfegirPeli();
+               // refreshfrag();
             }
         });
 
@@ -64,6 +67,8 @@ public class DrawerActivity extends AppCompatActivity
         setFragment(new titol());
 
     }
+
+
     public void setFragment(Fragment fragment) {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
@@ -87,6 +92,14 @@ public class DrawerActivity extends AppCompatActivity
         return true;
     }
 
+    void refreshfrag(){
+        Fragment currentFragment = getFragmentManager().findFragmentByTag("TITOL");
+        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+        fragTransaction.detach(currentFragment);
+        fragTransaction.attach(currentFragment);
+        fragTransaction.commit();
+    }
+
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -104,7 +117,7 @@ public class DrawerActivity extends AppCompatActivity
            // fragmentManager.beginTransaction().replace(R.id.content_frame,new titol());
             newFragment = new titol();
             transaction.replace(R.id.content_frame, newFragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack("TITOL");
             transaction.commit();
             Log.v("1", String.valueOf("apretem titol"));
 
@@ -112,20 +125,20 @@ public class DrawerActivity extends AppCompatActivity
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new anyestrena());
                  newFragment = new anyestrena();
                  transaction.replace(R.id.content_frame, newFragment);
-                 transaction.addToBackStack(null);
+                 transaction.addToBackStack("ANY");
                  transaction.commit();
             Log.v("3", String.valueOf("apretem any"));
         } else if (id == R.id.nav_about) {
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new about());
                  newFragment = new about();
                  transaction.replace(R.id.content_frame, newFragment);
-                 transaction.addToBackStack(null);
+                 transaction.addToBackStack("ABOUT");
                  transaction.commit();
         } else if (id == R.id.nav_help) {
            // fragmentManager.beginTransaction().replace(R.id.content_frame,new help());
                  newFragment = new help();
                  transaction.replace(R.id.content_frame, newFragment);
-                 transaction.addToBackStack(null);
+                 transaction.addToBackStack("HELP");
                  transaction.commit();
              }
 
@@ -153,7 +166,7 @@ public class DrawerActivity extends AppCompatActivity
         layout.addView(input2);
 
         final EditText input3 = new EditText(this);
-        input3.setInputType(InputType.TYPE_CLASS_TEXT);
+        input3.setInputType(InputType.TYPE_CLASS_NUMBER);
         input3.setHint("*Any d'estrena");
         layout.addView(input3);
 
