@@ -4,11 +4,9 @@
         <menu>
             <item
                 android:id="@+id/nav_titol"
-                android:icon="@drawable/ic_menu_camera"
                 android:title="Titol" />
             <item
                 android:id="@+id/nav_anyestrena"
-                android:icon="@drawable/ic_menu_slideshow"
                 android:title="Any estrena" />
         </menu>
     </item>
@@ -18,11 +16,11 @@
         <menu>
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/about"
                 android:title="About" />
             <item
                 android:id="@+id/nav_help"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/help"
                 android:title="Help" />
         </menu>
     </item>
