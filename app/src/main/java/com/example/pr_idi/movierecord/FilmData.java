@@ -81,6 +81,16 @@ public class FilmData {
                 + " = " + id, null);
     }
 
+    public int updateFilm(Film film,int critica){
+        long id = film.getId();
+        System.out.println("Film deleted with id: " + id);
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_CRITICS_RATE, critica);
+        return database.update(MySQLiteHelper.TABLE_FILMS,values,MySQLiteHelper.COLUMN_ID
+                + " = " + id,null);
+
+    }
+
     public List<Film> getAllFilms() {
         List<Film> comments = new ArrayList<>();
 
@@ -114,8 +124,6 @@ public class FilmData {
         cursor.close();
         return comments;
     }
-
-
 
     private Film cursorToFilm(Cursor cursor) {
         Film film = new Film();
