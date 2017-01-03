@@ -132,9 +132,9 @@ public class titol extends Fragment {
     }
 
     public boolean onContextItemSelected(MenuItem item) {
+        String title = film2.getTitle();
         switch (item.getItemId()) {
             case 0:
-                String title = film2.getTitle();
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
                 builder.setTitle("CRITICA DE " + title);
 
@@ -173,7 +173,25 @@ public class titol extends Fragment {
                 builder.show();
                 break;
             case 1:
-                //TODO: codi d'esborrar la peli
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
+                builder2.setMessage("ESBORRAR ' " + title +"'?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                filmData.deleteFilm(film2);
+                                Toast.makeText(getActivity().getApplicationContext(), film2.getTitle() + " esborrada correctament",Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
+                                datainicial();
+                            }
+                        })
+
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                builder2.show();
                 break;
         }
 

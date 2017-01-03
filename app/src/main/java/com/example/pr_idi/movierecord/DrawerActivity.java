@@ -21,8 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-
-import java.util.List;
+import android.widget.Toast;
 
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -161,7 +160,7 @@ public class DrawerActivity extends AppCompatActivity
         layout.addView(input);
 
         final EditText input2 = new EditText(this);
-        input2.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input2.setInputType(InputType.TYPE_CLASS_TEXT);
         input2.setHint("*País");
         layout.addView(input2);
 
@@ -199,6 +198,7 @@ public class DrawerActivity extends AppCompatActivity
                 puntuacio_Text = Integer.parseInt(input6.getText().toString());
 
                 filmData.createFilm(titol_Text,director_Text,pais_Text,prota_Text,any_Text,puntuacio_Text);
+                Toast.makeText(getApplicationContext(), "'"+titol_Text+"'" + " afegida correctament",Toast.LENGTH_LONG).show();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
