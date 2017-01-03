@@ -161,7 +161,7 @@ public class DrawerActivity extends AppCompatActivity
         layout.addView(input);
 
         final EditText input2 = new EditText(this);
-        input2.setInputType(InputType.TYPE_CLASS_TEXT);
+        input2.setInputType(InputType.TYPE_CLASS_NUMBER);
         input2.setHint("*País");
         layout.addView(input2);
 

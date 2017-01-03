@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static android.R.id.input;
 import static android.content.ContentValues.TAG;
@@ -138,32 +139,32 @@ public class titol extends Fragment {
         String title = values.get(info.position).getTitle();
         menu.setHeaderIcon(R.drawable.ic_menu_manage);
         menu.setHeaderTitle("EDITAR " + title);
-        menu.add(Menu.NONE, 0, menu.NONE, "Modificar critica");
+        menu.add(Menu.NONE, 0, menu.NONE, "Modificar crítica");
         menu.add(Menu.NONE, 1, menu.NONE, "Esborrar");
 
 
     }
 
     public boolean onContextItemSelected(MenuItem item) {
+        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String title = values.get(info.position).getTitle();
+        //busquem la peli amb el titol nompelieditar dins de values, pq la posicio de adaper pot ser diferent de la de values
+        String nomPeli = listViewAdapter.getItem(info.position);
+        int i = 0;
+        while(i < values.size()){
+            if (Objects.equals(values.get(i).getTitle(), nomPeli)) film2 = values.get(i);
+            ++i;
+        }
         switch (item.getItemId()) {
             case 0:
-                final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                String title = values.get(info.position).getTitle();
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
-                builder.setTitle("CRITICA DE " + title);
+                builder.setTitle("CRÍTICA DE '" + title+"'");
 
                 LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
                 layout.setOrientation(LinearLayout.VERTICAL);
 
                 final EditText txtcritica = new EditText(getActivity().getApplicationContext());
                 txtcritica.setInputType(InputType.TYPE_CLASS_NUMBER);
-                //busquem la peli amb el titol nompelieditar dins de values, pq la posicio la posicio de adaper pot ser diferent de la de values
-                String nompelieditar = listViewAdapter.getItem(info.position);
-                int i = 0;
-                while(i < values.size()){
-                    if (values.get(i).getTitle() == nompelieditar) film2 = values.get(i);
-                    ++i;
-                }
                 txtcritica.setText(String.valueOf(film2.getCritics_rate()));
                 txtcritica.setTextColor(Color.BLACK);
                 txtcritica.setHint("Puntuació de l'1 al 5");
@@ -193,7 +194,26 @@ public class titol extends Fragment {
                 builder.show();
                 break;
             case 1:
-                //TODO: codi d'esborrar la peli
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
+                builder2.setMessage("ESBORRAR ' " + title+"'?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                filmData.deleteFilm(film2);
+                                Toast.makeText(getActivity().getApplicationContext(), film2.getTitle() + " esborrada correctament",Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
+                                datainicial();
+                            }
+                        })
+
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                builder2.show();
                 break;
         }
 
