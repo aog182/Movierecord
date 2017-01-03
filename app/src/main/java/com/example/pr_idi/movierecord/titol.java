@@ -90,7 +90,7 @@ public class titol extends Fragment {
         while(i < values.size()) {
             nomactor =  values.get(i).getProtagonist();
             film = values.get(i);
-            if (!nomactor.contains(textabuscar)) values.remove(film);
+            if (!nomactor.toLowerCase().contains(textabuscar.toLowerCase())) values.remove(film);
             ++i;
         }
         listViewAdapter.notifyDataSetChanged();
