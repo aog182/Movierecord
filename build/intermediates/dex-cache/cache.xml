@@ -3,33 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="af5158396f1626b9195d208c5bd8297dc71e1783">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6734179417c7b740e68fea225d99129428ade8dc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="1ea5552bb25a3d5e69e69e312ee5954720de02bf">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b72f1689abc6747bdc6f9ca4b47a18dc0eb2111e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="1821601ddbec5ff125653097812823388700af74">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-22.2.1_57c6b740b1b4676857f4ed624e4291eee83b85f3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -39,12 +12,39 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="ef45387625169361ce1bd6f485d0991aca3a1080">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6734179417c7b740e68fea225d99129428ade8dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="539d09f023e6d1639329272a58d05e5ae62b535f">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b72f1689abc6747bdc6f9ca4b47a18dc0eb2111e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Miquel\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.2.1_3299b5c8f3d26a6528685eeecd4638ac1f9c49b8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-22.2.1_57c6b740b1b4676857f4ed624e4291eee83b85f3\classes.dex" />
     </item>
     <item
         is-multidex="true"

@@ -40,9 +40,8 @@ public class titol extends Fragment {
     Film film,film2;
     ListView listView; //llista que somplira amb la query
     EditText editText;//quadre de text de la cerca
-    ArrayAdapter<String> listViewAdapter; //Adaptador de la listview
+    ArrayAdapter<Film> listViewAdapter; //Adaptador de la listview
     List<Film> values = new ArrayList<>(); //lista de valors que posem a la listview
-    List<String> titols = new ArrayList<>();
 
 
 
@@ -94,7 +93,6 @@ public class titol extends Fragment {
             if (!nomactor.contains(textabuscar)) values.remove(film);
             ++i;
         }
-        nomestitols();
         listViewAdapter.notifyDataSetChanged();
     }
 
@@ -112,30 +110,19 @@ public class titol extends Fragment {
 
     void datainicial(){
         values = filmData.getAllFilmstitol();
-        nomestitols();
         listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
-                R.layout.list_item,R.id.txtitem, titols);
+                R.layout.list_item,R.id.txtitem, values);
 
         listView.setAdapter(listViewAdapter);
         registerForContextMenu(listView);
-    }
-
-    void nomestitols(){
-        titols.clear();
-        int i = 0;
-        String titolpeli;
-        while(i < values.size()){
-            titolpeli = values.get(i).getTitle();
-            titols.add(i,titolpeli);
-            ++i;
-        }
     }
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, view, menuInfo);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        String title = values.get(info.position).getTitle();
+        film2 = listViewAdapter.getItem(info.position);
+        String title = film2.getTitle();
         menu.setHeaderIcon(R.drawable.ic_menu_manage);
         menu.setHeaderTitle("EDITAR " + title);
         menu.add(Menu.NONE, 0, menu.NONE, "Modificar critica");
@@ -147,23 +134,16 @@ public class titol extends Fragment {
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 0:
-                final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                String title = values.get(info.position).getTitle();
+                String title = film2.getTitle();
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
                 builder.setTitle("CRITICA DE " + title);
 
                 LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
                 layout.setOrientation(LinearLayout.VERTICAL);
 
+
                 final EditText txtcritica = new EditText(getActivity().getApplicationContext());
                 txtcritica.setInputType(InputType.TYPE_CLASS_NUMBER);
-                //busquem la peli amb el titol nompelieditar dins de values, pq la posicio la posicio de adaper pot ser diferent de la de values
-                String nompelieditar = listViewAdapter.getItem(info.position);
-                int i = 0;
-                while(i < values.size()){
-                    if (values.get(i).getTitle() == nompelieditar) film2 = values.get(i);
-                    ++i;
-                }
                 txtcritica.setText(String.valueOf(film2.getCritics_rate()));
                 txtcritica.setTextColor(Color.BLACK);
                 txtcritica.setHint("Puntuació de l'1 al 5");

@@ -78,6 +78,6 @@ public class Film {
     // Will be used by the ArrayAdapter in the ListView
     @Override
     public String toString() {
-        return String.format("%s - %s", title, director);
+        return String.format("%s ", title);
     }
 }
