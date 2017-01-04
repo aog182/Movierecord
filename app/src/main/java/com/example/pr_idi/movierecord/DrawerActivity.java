@@ -49,7 +49,7 @@ public class DrawerActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 dialogAfegirPeli();
-               // refreshfrag();
+                refreshfrag();
             }
         });
 
@@ -92,11 +92,19 @@ public class DrawerActivity extends AppCompatActivity
     }
 
     void refreshfrag(){
-        Fragment currentFragment = getFragmentManager().findFragmentByTag("TITOL");
-        FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-        fragTransaction.detach(currentFragment);
-        fragTransaction.attach(currentFragment);
-        fragTransaction.commit();
+
+        titol fragment = (titol) getFragmentManager().findFragmentByTag("TITOL");
+        if (fragment != null){
+            Log.v("9", "trobem titol");
+            fragment.datainicial();
+        }
+
+        anyestrena fragment2 = (anyestrena) getFragmentManager().findFragmentByTag("ANY");
+        if (fragment2 != null){
+            Log.v("9", "trobem anyestrena");
+            fragment2.refresh();
+        }
+
     }
 
 

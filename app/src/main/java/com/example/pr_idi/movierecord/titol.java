@@ -44,7 +44,6 @@ public class titol extends Fragment {
     List<Film> values = new ArrayList<>(); //lista de valors que posem a la listview
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +66,8 @@ public class titol extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                Log.v("9", s.toString());
                 if (s.toString().equals("")){
                     //totes les pelis sense filtre
                     datainicial();
@@ -77,7 +78,6 @@ public class titol extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 buscarelement(s.toString());
-
             }
         });
 
@@ -85,12 +85,16 @@ public class titol extends Fragment {
     }
 
     public void buscarelement(String textabuscar){
+
+        Log.v("9", textabuscar);
         int i = 0;
         String nomactor;
+        //if (values.size() == 0) values = filmData.getAllFilmstitol();
         while(i < values.size()) {
             nomactor =  values.get(i).getProtagonist();
             film = values.get(i);
-            if (!nomactor.toLowerCase().contains(textabuscar.toLowerCase())) values.remove(film);
+            Log.v("9",nomactor.toLowerCase());
+            if (!(nomactor.toLowerCase().contains(textabuscar.toLowerCase()))) values.remove(film);
             ++i;
         }
         listViewAdapter.notifyDataSetChanged();
@@ -108,7 +112,7 @@ public class titol extends Fragment {
         super.onPause();
     }
 
-    void datainicial(){
+    public void datainicial(){
         values = filmData.getAllFilmstitol();
         listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
                 R.layout.list_item,R.id.txtitem, values);
@@ -198,6 +202,9 @@ public class titol extends Fragment {
         return super.onContextItemSelected(item);
 
     }
+
+
+
 }
 
 

@@ -44,5 +44,10 @@ public class anyestrena extends Fragment {
         return myView;
     }
 
+    public void refresh(){
+        movieList = filmData.getAllFilmsYear();
+        mAdapter.notifyDataSetChanged();
+    }
+
 
 }

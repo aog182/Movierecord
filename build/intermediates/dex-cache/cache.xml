@@ -3,33 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="66ae5b7763ec324c25767d05799ecedcb4a1102b">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6734179417c7b740e68fea225d99129428ade8dc\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="f9507bb7c2c8619032a75f643ba47bd17127ce85">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b72f1689abc6747bdc6f9ca4b47a18dc0eb2111e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="22.0.1"
-        sha1="1821601ddbec5ff125653097812823388700af74">
-        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-22.2.1_57c6b740b1b4676857f4ed624e4291eee83b85f3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -39,12 +12,48 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\22.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-22.1.1_294142ea51e22f00d451e08d7e8c2f213206aeb0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="751cc519e6397fd65a9cb2fe430417abb4762894">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6734179417c7b740e68fea225d99129428ade8dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="f5f8fd4d0cbeafc079c2d6e8bceacde4cc27d24f">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b72f1689abc6747bdc6f9ca4b47a18dc0eb2111e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Miquel\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
         <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-22.2.1_3299b5c8f3d26a6528685eeecd4638ac1f9c49b8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="22.0.1"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\Miquel\AndroidStudioProjects\Movierecord\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-22.2.1_57c6b740b1b4676857f4ed624e4291eee83b85f3\classes.dex" />
     </item>
     <item
         is-multidex="true"
