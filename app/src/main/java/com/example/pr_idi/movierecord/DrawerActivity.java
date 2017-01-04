@@ -155,8 +155,8 @@ public class DrawerActivity extends AppCompatActivity
     }
 
     public void dialogAfegirPeli(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Afegir peli");
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Afegir pel·lícula");
 
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -164,27 +164,27 @@ public class DrawerActivity extends AppCompatActivity
         // Set up the input
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
-        input.setHint("*Títol");
+        input.setHint("Títol");
         layout.addView(input);
 
         final EditText input2 = new EditText(this);
         input2.setInputType(InputType.TYPE_CLASS_TEXT);
-        input2.setHint("*País");
+        input2.setHint("País");
         layout.addView(input2);
 
         final EditText input3 = new EditText(this);
         input3.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input3.setHint("*Any d'estrena");
+        input3.setHint("Any d'estrena");
         layout.addView(input3);
 
         final EditText input4 = new EditText(this);
         input4.setInputType(InputType.TYPE_CLASS_TEXT);
-        input4.setHint("*Director");
+        input4.setHint("Director");
         layout.addView(input4);
 
         final EditText input5 = new EditText(this);
         input5.setInputType(InputType.TYPE_CLASS_TEXT);
-        input5.setHint("*Actor protagonista");
+        input5.setHint("Actor protagonista");
         layout.addView(input5);
 
         final EditText input6 = new EditText(this);
@@ -200,13 +200,16 @@ public class DrawerActivity extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which) {
                 titol_Text = input.getText().toString();
                 pais_Text = input2.getText().toString();
-                any_Text = Integer.parseInt(input3.getText().toString());
                 director_Text = input4.getText().toString();
                 prota_Text = input5.getText().toString();
-                puntuacio_Text = Integer.parseInt(input6.getText().toString());
-
-                filmData.createFilm(titol_Text,director_Text,pais_Text,prota_Text,any_Text,puntuacio_Text);
-                Toast.makeText(getApplicationContext(), "'"+titol_Text+"'" + " afegida correctament",Toast.LENGTH_LONG).show();
+                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
+                } else {
+                    any_Text = Integer.parseInt(input3.getText().toString());
+                    puntuacio_Text = Integer.parseInt(input6.getText().toString());
+                    filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
+                    Toast.makeText(getApplicationContext(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
+                }
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

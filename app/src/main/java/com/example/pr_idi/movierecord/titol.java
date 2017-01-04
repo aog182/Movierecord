@@ -206,20 +206,3 @@ public class titol extends Fragment {
 
 
 }
-
-
-/*case R.id.add:
-                String[] newFilm = new String[] { "Blade Runner", "Ridley Scott", "Rocky Horror Picture Show", "Jim Sharman", "The Godfather", "Francis Ford Coppola", "Toy Story", "John Lasseter" };
-                int nextInt = new Random().nextInt(4);
-                // save the new film to the database
-                film = filmData.createFilm(newFilm[nextInt*2], newFilm[nextInt*2 + 1]);
-                adapter.add(film);
-                break;
-            case R.id.delete:
-                if (getListAdapter().getCount() > 0) {
-                    film = (Film) getListAdapter().getItem(0);
-                    filmData.deleteFilm(film);
-                    adapter.remove(film);
-                }
-                break;
-                */

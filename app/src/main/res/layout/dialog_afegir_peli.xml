@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Títol"
+        android:inputType="text"
+        android:id="@+id/titol"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="País"
+        android:inputType="text"
+        android:id="@+id/pais"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Any d'estrena"
+        android:inputType="number"
+        android:id="@+id/any"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Director"
+        android:inputType="text"
+        android:id="@+id/director"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Actor protagonista"
+        android:inputType="text"
+        android:id="@+id/prota"/>
+
+    <RatingBar
+        android:layout_height="wrap_content"
+        android:id="@+id/estrella"
+        android:stepSize="1"
+        style="?android:attr/ratingBarStyle"
+        android:numStars="5"
+        android:isIndicator="false"
+        android:layout_width="wrap_content"
+        android:progressTint="@android:color/holo_blue_dark"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:transformPivotX="5dp"
+        android:transformPivotY="5dp"
+        android:layout_alignParentStart="true" />
+
+
+</LinearLayout>
