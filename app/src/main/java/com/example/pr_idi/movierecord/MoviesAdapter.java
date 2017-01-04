@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView title, year, director, protagonist, country, rate;
+        public RatingBar critica;
 
         public MyViewHolder(View view) {
             super(view);
@@ -24,8 +26,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
             director = (TextView) view.findViewById(R.id.director);
             country = (TextView) view.findViewById(R.id.country);
             protagonist = (TextView) view.findViewById(R.id.protagonist);
-            rate = (TextView) view.findViewById(R.id.rate);
             year = (TextView) view.findViewById(R.id.year);
+            critica = (RatingBar) view.findViewById(R.id.estrella);
         }
     }
 
@@ -49,8 +51,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
         holder.director.setText(movie.getDirector());
         holder.protagonist.setText(movie.getProtagonist());
         holder.country.setText(movie.getCountry());
-        holder.rate.setText(Integer.toString(movie.getCritics_rate()));
         holder.year.setText(Integer.toString(movie.getYear()));
+        holder.critica.setRating(movie.getCritics_rate());
     }
 
     @Override
