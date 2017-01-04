@@ -128,8 +128,8 @@ public class titol extends Fragment {
         film2 = listViewAdapter.getItem(info.position);
         String title = film2.getTitle();
         menu.setHeaderIcon(R.drawable.ic_menu_manage);
-        menu.setHeaderTitle("EDITAR " + title);
-        menu.add(Menu.NONE, 0, menu.NONE, "Modificar critica");
+        menu.setHeaderTitle("EDITAR '" + title+"'");
+        menu.add(Menu.NONE, 0, menu.NONE, "Modificar crítica");
         menu.add(Menu.NONE, 1, menu.NONE, "Esborrar");
 
 
@@ -140,7 +140,7 @@ public class titol extends Fragment {
         switch (item.getItemId()) {
             case 0:
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
-                builder.setTitle("CRITICA DE " + title);
+                builder.setTitle("CRÍTICA DE " + title);
 
                 LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
                 layout.setOrientation(LinearLayout.VERTICAL);
@@ -161,8 +161,8 @@ public class titol extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         int puntuacio_Text = Integer.parseInt(txtcritica.getText().toString());
                         int result = filmData.updateFilm(film2,puntuacio_Text);
-                        if (result == 1) Toast.makeText(getActivity().getApplicationContext(), film2.getTitle() + " editada correctament",Toast.LENGTH_LONG).show();
-                        else Toast.makeText(getActivity().getApplicationContext(), "ERROR AL EDITAR",Toast.LENGTH_LONG).show();
+                        if (result == 1) Toast.makeText(getActivity().getApplicationContext(), "'"+film2.getTitle() + "' editada correctament",Toast.LENGTH_LONG).show();
+                        else Toast.makeText(getActivity().getApplicationContext(), "Error a l'editar",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
                         datainicial();
                     }
@@ -183,7 +183,7 @@ public class titol extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 filmData.deleteFilm(film2);
-                                Toast.makeText(getActivity().getApplicationContext(), film2.getTitle() + " esborrada correctament",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity().getApplicationContext(), "'"+film2.getTitle() + "' esborrada correctament",Toast.LENGTH_LONG).show();
                                 dialog.dismiss();
                                 datainicial();
                             }

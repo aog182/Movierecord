@@ -3,11 +3,52 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:text="ABOUT"
+        android:text="Sobre l'aplicació"
         android:layout_width="wrap_content"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@color/title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="105dp"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="55dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/miquel"
+        android:id="@+id/imageView3"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_marginStart="108dp"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="42dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arnau"
+        android:id="@+id/imageView2"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="49dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="83dp"
+        android:layout_above="@+id/textView2"
+        android:layout_alignEnd="@+id/textView3" />
+
+    <TextView
+        android:text="Arnau Orriols - (arnau.orriols.garcia)\nMiquel Pasanau - (miquel.pasanau)\n\nPràctica 1: Administracio de pel·lícules\nIDI - grup 10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_marginBottom="78dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
