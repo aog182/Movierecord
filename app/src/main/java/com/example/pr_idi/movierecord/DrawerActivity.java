@@ -27,12 +27,7 @@ public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FilmData filmData;
-    private String titol_Text = "";
-    private String pais_Text = "";
-    private int any_Text;
-    private String director_Text = "";
-    private String prota_Text = "";
-    private int puntuacio_Text;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +39,6 @@ public class DrawerActivity extends AppCompatActivity
         filmData = new FilmData(getApplicationContext());
         filmData.open();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialogAfegirPeli();
-                refreshfrag();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -91,35 +78,15 @@ public class DrawerActivity extends AppCompatActivity
         return true;
     }
 
-    void refreshfrag(){
-
-        titol fragment = (titol) getFragmentManager().findFragmentByTag("TITOL");
-        if (fragment != null){
-            Log.v("9", "trobem titol");
-            fragment.datainicial();
-        }
-
-        anyestrena fragment2 = (anyestrena) getFragmentManager().findFragmentByTag("ANY");
-        if (fragment2 != null){
-            Log.v("9", "trobem anyestrena");
-            fragment2.refresh();
-        }
-
-    }
-
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
-
         Fragment newFragment;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-             if (id == R.id.nav_titol) {
+        if (id == R.id.nav_titol) {
            // Handle the camera action
            // fragmentManager.beginTransaction().replace(R.id.content_frame,new titol());
             newFragment = new titol();
@@ -148,77 +115,10 @@ public class DrawerActivity extends AppCompatActivity
                  transaction.addToBackStack("HELP");
                  transaction.commit();
              }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void dialogAfegirPeli(){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Afegir pel·lícula");
 
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-        // Set up the input
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        input.setHint("Títol");
-        layout.addView(input);
-
-        final EditText input2 = new EditText(this);
-        input2.setInputType(InputType.TYPE_CLASS_TEXT);
-        input2.setHint("País");
-        layout.addView(input2);
-
-        final EditText input3 = new EditText(this);
-        input3.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input3.setHint("Any d'estrena");
-        layout.addView(input3);
-
-        final EditText input4 = new EditText(this);
-        input4.setInputType(InputType.TYPE_CLASS_TEXT);
-        input4.setHint("Director");
-        layout.addView(input4);
-
-        final EditText input5 = new EditText(this);
-        input5.setInputType(InputType.TYPE_CLASS_TEXT);
-        input5.setHint("Actor protagonista");
-        layout.addView(input5);
-
-        final EditText input6 = new EditText(this);
-        input6.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input6.setHint("Puntuació de l'1 al 5");
-        layout.addView(input6);
-
-        builder.setView(layout);
-
-        // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                titol_Text = input.getText().toString();
-                pais_Text = input2.getText().toString();
-                director_Text = input4.getText().toString();
-                prota_Text = input5.getText().toString();
-                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
-                } else {
-                    any_Text = Integer.parseInt(input3.getText().toString());
-                    puntuacio_Text = Integer.parseInt(input6.getText().toString());
-                    filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
-                    Toast.makeText(getApplicationContext(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
-    }
 }

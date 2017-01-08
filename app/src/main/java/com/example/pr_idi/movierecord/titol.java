@@ -3,8 +3,10 @@ package com.example.pr_idi.movierecord;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.Rating;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.internal.view.ContextThemeWrapper;
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +25,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -42,6 +46,13 @@ public class titol extends Fragment {
     EditText editText;//quadre de text de la cerca
     ArrayAdapter<Film> listViewAdapter; //Adaptador de la listview
     List<Film> values = new ArrayList<>(); //lista de valors que posem a la listview
+    private String titol_Text = "";
+    private String pais_Text = "";
+    private int any_Text;
+    private String director_Text = "";
+    private String prota_Text = "";
+    private int puntuacio_Text;
+
 
 
     @Nullable
@@ -53,7 +64,7 @@ public class titol extends Fragment {
         listView = (ListView) myView.findViewById(R.id.listtitol);
         editText = (EditText) myView.findViewById(R.id.txtsearch);
 
-        filmData = new FilmData(getActivity().getApplicationContext()); //context de l'activitat superior
+        filmData = new FilmData(getActivity()); //context de l'activitat superior
         filmData.open();
 
         datainicial();
@@ -71,13 +82,21 @@ public class titol extends Fragment {
                 if (s.toString().equals("")){
                     //totes les pelis sense filtre
                     datainicial();
-                    //listViewAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 buscarelement(s.toString());
+            }
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) myView.findViewById(R.id.fabtitol);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogAfegirPeli();
+
             }
         });
 
@@ -89,7 +108,6 @@ public class titol extends Fragment {
         Log.v("9", textabuscar);
         int i = 0;
         String nomactor;
-        //if (values.size() == 0) values = filmData.getAllFilmstitol();
         while(i < values.size()) {
             nomactor =  values.get(i).getProtagonist();
             film = values.get(i);
@@ -114,7 +132,7 @@ public class titol extends Fragment {
 
     public void datainicial(){
         values = filmData.getAllFilmstitol();
-        listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+        listViewAdapter = new ArrayAdapter<>(getActivity(),
                 R.layout.list_item,R.id.txtitem, values);
 
         listView.setAdapter(listViewAdapter);
@@ -140,29 +158,19 @@ public class titol extends Fragment {
         switch (item.getItemId()) {
             case 0:
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
-                builder.setTitle("CRÍTICA DE " + title);
-
-                LinearLayout layout = new LinearLayout(getActivity().getApplicationContext());
-                layout.setOrientation(LinearLayout.VERTICAL);
-
-
-                final EditText txtcritica = new EditText(getActivity().getApplicationContext());
-                txtcritica.setInputType(InputType.TYPE_CLASS_NUMBER);
-                txtcritica.setText(String.valueOf(film2.getCritics_rate()));
-                txtcritica.setTextColor(Color.BLACK);
-                txtcritica.setHint("Puntuació de l'1 al 5");
-                layout.addView(txtcritica);
-
-                builder.setView(layout);
-
-                // Set up the buttons
+                builder.setTitle("CRÍTICA DE '" + title);
+                LayoutInflater layout = LayoutInflater.from(getActivity());
+                final View vista = layout.inflate(R.layout.critica,null);
+                final RatingBar rater = (RatingBar) vista.findViewById(R.id.rating);
+                rater.setRating(film2.getCritics_rate());
+                builder.setView(vista);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int puntuacio_Text = Integer.parseInt(txtcritica.getText().toString());
-                        int result = filmData.updateFilm(film2,puntuacio_Text);
-                        if (result == 1) Toast.makeText(getActivity().getApplicationContext(), "'"+film2.getTitle() + "' editada correctament",Toast.LENGTH_LONG).show();
-                        else Toast.makeText(getActivity().getApplicationContext(), "Error a l'editar",Toast.LENGTH_LONG).show();
+                        final int puntuacio = (int) rater.getRating();
+                        int result = filmData.updateFilm(film2,puntuacio);
+                        if (result == 1) Toast.makeText(getActivity(), film2.getTitle() + " editada correctament",Toast.LENGTH_LONG).show();
+                        else Toast.makeText(getActivity(), "ERROR AL EDITAR",Toast.LENGTH_LONG).show();
                         dialog.dismiss();
                         datainicial();
                     }
@@ -183,7 +191,7 @@ public class titol extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 filmData.deleteFilm(film2);
-                                Toast.makeText(getActivity().getApplicationContext(), "'"+film2.getTitle() + "' esborrada correctament",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "'"+film2.getTitle() + "' esborrada correctament",Toast.LENGTH_LONG).show();
                                 dialog.dismiss();
                                 datainicial();
                             }
@@ -201,6 +209,75 @@ public class titol extends Fragment {
 
         return super.onContextItemSelected(item);
 
+    }
+
+    public void dialogAfegirPeli(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Afegir pel·lícula");
+
+        LinearLayout layout = new LinearLayout(getActivity());
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        // Set up the input
+        final EditText input = new EditText(getActivity());
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setHint("Títol");
+        layout.addView(input);
+
+        final EditText input2 = new EditText(getActivity());
+        input2.setInputType(InputType.TYPE_CLASS_TEXT);
+        input2.setHint("País");
+        layout.addView(input2);
+
+        final EditText input3 = new EditText(getActivity());
+        input3.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input3.setHint("Any d'estrena");
+        layout.addView(input3);
+
+        final EditText input4 = new EditText(getActivity());
+        input4.setInputType(InputType.TYPE_CLASS_TEXT);
+        input4.setHint("Director");
+        layout.addView(input4);
+
+        final EditText input5 = new EditText(getActivity());
+        input5.setInputType(InputType.TYPE_CLASS_TEXT);
+        input5.setHint("Actor protagonista");
+        layout.addView(input5);
+
+        final EditText input6 = new EditText(getActivity());
+        input6.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input6.setHint("Puntuació de l'1 al 5");
+        layout.addView(input6);
+
+        builder.setView(layout);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                titol_Text = input.getText().toString();
+                pais_Text = input2.getText().toString();
+                director_Text = input4.getText().toString();
+                prota_Text = input5.getText().toString();
+                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
+                } else {
+                    any_Text = Integer.parseInt(input3.getText().toString());
+                    puntuacio_Text = Integer.parseInt(input6.getText().toString());
+                    filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
+                    Toast.makeText(getActivity(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
+                    datainicial();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
     }
 
 
