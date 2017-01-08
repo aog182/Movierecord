@@ -10,8 +10,11 @@
         android:progressTint="@android:color/holo_blue_dark"
         android:progressBackgroundTint="@android:color/darker_gray"
         style="?android:attr/ratingBarStyle"
-        android:numStars="10"
         android:stepSize="1"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:transformPivotX="5dp"
+        android:transformPivotY="5dp"
         />
 
 </LinearLayout>

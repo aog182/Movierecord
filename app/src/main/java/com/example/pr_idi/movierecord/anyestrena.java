@@ -123,7 +123,7 @@ public class anyestrena extends Fragment {
                 if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
                 }
-                if (Integer.parseInt(input6.getText().toString()) <= 0 && Integer.parseInt(input6.getText().toString()) > 10)
+                if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10)
                     Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
                 else{
                     any_Text = Integer.parseInt(input3.getText().toString());

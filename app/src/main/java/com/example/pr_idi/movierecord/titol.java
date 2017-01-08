@@ -159,20 +159,36 @@ public class titol extends Fragment {
             case 0:
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
                 builder.setTitle("CRÍTICA DE '" + title);
-                LayoutInflater layout = LayoutInflater.from(getActivity());
-                final View vista = layout.inflate(R.layout.critica,null);
+              //  LayoutInflater layout = LayoutInflater.from(getActivity());
+
+                LinearLayout layout = new LinearLayout(getActivity());
+                layout.setOrientation(LinearLayout.VERTICAL);
+                final EditText num = new EditText(getActivity());
+
+                num.setInputType(InputType.TYPE_CLASS_NUMBER);
+                num.setText(String.valueOf(film2.getCritics_rate()));
+              //  input6.setHint("Puntuació de l'1 al 10");
+                layout.addView(num);
+
+                /*final View vista = layout.inflate(R.layout.critica,null);
                 final RatingBar rater = (RatingBar) vista.findViewById(R.id.rating);
-                rater.setRating(film2.getCritics_rate());
-                builder.setView(vista);
+                rater.setNumStars(10);
+                rater.setRating(film2.getCritics_rate());*/
+                builder.setView(layout);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        final int puntuacio = (int) rater.getRating();
-                        int result = filmData.updateFilm(film2,puntuacio);
-                        if (result == 1) Toast.makeText(getActivity(), film2.getTitle() + " editada correctament",Toast.LENGTH_LONG).show();
-                        else Toast.makeText(getActivity(), "ERROR AL EDITAR",Toast.LENGTH_LONG).show();
-                        dialog.dismiss();
-                        datainicial();
+                        final int puntuacio = Integer.parseInt(num.getText().toString());
+                        if (puntuacio <= 0 || puntuacio > 10)
+                            Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
+                        else {
+                            int result = filmData.updateFilm(film2, puntuacio);
+                            if (result == 1)
+                                Toast.makeText(getActivity(), film2.getTitle() + " editada correctament", Toast.LENGTH_LONG).show();
+                            else Toast.makeText(getActivity(), "ERROR AL EDITAR", Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                            datainicial();
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -261,7 +277,7 @@ public class titol extends Fragment {
                 prota_Text = input5.getText().toString();
                 if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
-                if (Integer.parseInt(input6.getText().toString()) <= 0 && Integer.parseInt(input6.getText().toString()) > 10)
+                if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10)
                         Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
                 } else {
                     any_Text = Integer.parseInt(input3.getText().toString());
