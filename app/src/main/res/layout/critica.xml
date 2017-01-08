@@ -10,7 +10,7 @@
         android:progressTint="@android:color/holo_blue_dark"
         android:progressBackgroundTint="@android:color/darker_gray"
         style="?android:attr/ratingBarStyle"
-        android:numStars="5"
+        android:numStars="10"
         android:stepSize="1"
         />
 

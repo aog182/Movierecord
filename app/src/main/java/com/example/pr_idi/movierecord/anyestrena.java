@@ -107,7 +107,7 @@ public class anyestrena extends Fragment {
 
         final EditText input6 = new EditText(getActivity());
         input6.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input6.setHint("Puntuació de l'1 al 5");
+        input6.setHint("Puntuació de l'1 al 10");
         layout.addView(input6);
 
         builder.setView(layout);
@@ -122,7 +122,10 @@ public class anyestrena extends Fragment {
                 prota_Text = input5.getText().toString();
                 if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
-                } else {
+                }
+                if (Integer.parseInt(input6.getText().toString()) <= 0 && Integer.parseInt(input6.getText().toString()) > 10)
+                    Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
+                else{
                     any_Text = Integer.parseInt(input3.getText().toString());
                     puntuacio_Text = Integer.parseInt(input6.getText().toString());
                     filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);

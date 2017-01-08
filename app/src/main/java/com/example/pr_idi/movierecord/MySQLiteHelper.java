@@ -37,22 +37,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_INSERT1 = "insert into " + TABLE_FILMS
             + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
             + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
-            + ") values ('The Apartment','USA',1960,'Billy Wilder','Jack Lemmon',5);";
+            + ") values ('The Apartment','USA',1960,'Billy Wilder','Jack Lemmon',10);";
 
     private static final String DATABASE_INSERT2 = "insert into " + TABLE_FILMS
             + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
             + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
-            + ") values ('A Monster Calls','Spain',2016,'J.A. Bayona','Sigourney Weaver',2);";
+            + ") values ('A Monster Calls','Spain',2016,'J.A. Bayona','Sigourney Weaver',4);";
 
     private static final String DATABASE_INSERT3 = "insert into " + TABLE_FILMS
             + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
             + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
-            + ") values ('Mommy','Canada',2014,'Xavier Dolan','Anne Dorval',4);";
+            + ") values ('Mommy','Canada',2014,'Xavier Dolan','Anne Dorval',8);";
 
     private static final String DATABASE_INSERT4 = "insert into " + TABLE_FILMS
             + " (" + COLUMN_TITLE + "," + COLUMN_COUNTRY + "," + COLUMN_YEAR_RELEASE + ","
             + COLUMN_DIRECTOR + "," + COLUMN_PROTAGONIST + "," + COLUMN_CRITICS_RATE
-            + ") values ('Pulp Fiction','USA',1994,'Quentin Tarantino','John Travolta',5);";
+            + ") values ('Pulp Fiction','USA',1994,'Quentin Tarantino','John Travolta',10);";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
