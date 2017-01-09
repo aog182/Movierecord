@@ -120,17 +120,20 @@ public class anyestrena extends Fragment {
                 pais_Text = input2.getText().toString();
                 director_Text = input4.getText().toString();
                 prota_Text = input5.getText().toString();
-                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
+                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty()) {
                     Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
-                }
-                if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10)
-                    Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
-                else{
-                    any_Text = Integer.parseInt(input3.getText().toString());
-                    puntuacio_Text = Integer.parseInt(input6.getText().toString());
-                    filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
-                    Toast.makeText(getActivity(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
-                    refresh();
+                    dialogAfegirPeli();
+                } else if (!input6.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10) {
+                        Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
+                        dialogAfegirPeli();
+                    } else {
+                        any_Text = Integer.parseInt(input3.getText().toString());
+                        puntuacio_Text = Integer.parseInt(input6.getText().toString());
+                        filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
+                        Toast.makeText(getActivity(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
+                        refresh();
+                    }
                 }
             }
         });

@@ -93,7 +93,7 @@ public class DrawerActivity extends AppCompatActivity
             transaction.replace(R.id.content_frame, newFragment);
             transaction.addToBackStack("TITOL");
             transaction.commit();
-            Log.v("1", String.valueOf("apretem titol"));
+
 
         } else if (id == R.id.nav_anyestrena) {
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new anyestrena());
@@ -101,7 +101,6 @@ public class DrawerActivity extends AppCompatActivity
                  transaction.replace(R.id.content_frame, newFragment);
                  transaction.addToBackStack("ANY");
                  transaction.commit();
-            Log.v("3", String.valueOf("apretem any"));
         } else if (id == R.id.nav_about) {
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new about());
                  newFragment = new about();

@@ -59,7 +59,6 @@ public class titol extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.titol,container,false);
-        Log.v("1", String.valueOf("estem a titol"));
 
         listView = (ListView) myView.findViewById(R.id.listtitol);
         editText = (EditText) myView.findViewById(R.id.txtsearch);
@@ -158,7 +157,7 @@ public class titol extends Fragment {
         switch (item.getItemId()) {
             case 0:
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
-                builder.setTitle("CRÍTICA DE '" + title);
+                builder.setTitle("CRÍTICA DE '" + title+"'");
               //  LayoutInflater layout = LayoutInflater.from(getActivity());
 
                 LinearLayout layout = new LinearLayout(getActivity());
@@ -180,12 +179,12 @@ public class titol extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         final int puntuacio = Integer.parseInt(num.getText().toString());
                         if (puntuacio <= 0 || puntuacio > 10)
-                            Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "La puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
                         else {
                             int result = filmData.updateFilm(film2, puntuacio);
                             if (result == 1)
-                                Toast.makeText(getActivity(), film2.getTitle() + " editada correctament", Toast.LENGTH_LONG).show();
-                            else Toast.makeText(getActivity(), "ERROR AL EDITAR", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "'"+film2.getTitle()+"'" + " editada correctament", Toast.LENGTH_LONG).show();
+                            else Toast.makeText(getActivity(), "ERROR A L'EDITAR", Toast.LENGTH_LONG).show();
                             dialog.dismiss();
                             datainicial();
                         }
@@ -202,7 +201,7 @@ public class titol extends Fragment {
                 break;
             case 1:
                 AlertDialog.Builder builder2 = new AlertDialog.Builder(getActivity());
-                builder2.setMessage("ESBORRAR ' " + title +"'?")
+                builder2.setMessage("ESBORRAR '" + title +"'?")
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -275,16 +274,20 @@ public class titol extends Fragment {
                 pais_Text = input2.getText().toString();
                 director_Text = input4.getText().toString();
                 prota_Text = input5.getText().toString();
-                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty() || input6.getText().toString().isEmpty()) {
+                if (titol_Text.isEmpty() || input3.getText().toString().isEmpty() || pais_Text.isEmpty() || director_Text.isEmpty() || prota_Text.isEmpty()) {
                     Toast.makeText(getActivity(), "S'han d'omplir tots els camps", Toast.LENGTH_LONG).show();
-                if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10)
+                    dialogAfegirPeli();
+                } else if (!input6.getText().toString().isEmpty()) {
+                    if (Integer.parseInt(input6.getText().toString()) <= 0 || Integer.parseInt(input6.getText().toString()) > 10) {
                         Toast.makeText(getActivity(), "Puntuació ha de ser entre 1 i 10", Toast.LENGTH_LONG).show();
-                } else {
-                    any_Text = Integer.parseInt(input3.getText().toString());
-                    puntuacio_Text = Integer.parseInt(input6.getText().toString());
-                    filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
-                    Toast.makeText(getActivity(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
-                    datainicial();
+                        dialogAfegirPeli();
+                    } else {
+                        any_Text = Integer.parseInt(input3.getText().toString());
+                        puntuacio_Text = Integer.parseInt(input6.getText().toString());
+                        filmData.createFilm(titol_Text, director_Text, pais_Text, prota_Text, any_Text, puntuacio_Text);
+                        Toast.makeText(getActivity(), "'" + titol_Text + "'" + " afegida correctament", Toast.LENGTH_LONG).show();
+                        datainicial();
+                    }
                 }
             }
         });
