@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.id.input;
+import static android.R.id.list;
 import static android.content.ContentValues.TAG;
 
 /**
@@ -68,6 +69,7 @@ public class titol extends Fragment {
 
         datainicial();
 
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -76,17 +78,27 @@ public class titol extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                Log.v("9", s.toString());
-                if (s.toString().equals("")){
-                    //totes les pelis sense filtre
-                    datainicial();
+                if (!s.toString().equals("")) {
+                    List<Film> filteredfilms = new ArrayList<Film>();
+                    for (int i=0; i<values.size(); i++) {
+                        if (values.get(i).getProtagonist().toLowerCase().contains(s.toString().toLowerCase())) {
+                            filteredfilms.add(values.get(i));
+                        }
+                    }
+                    listViewAdapter = new ArrayAdapter(getActivity(),
+                            R.layout.list_item,R.id.txtitem, filteredfilms);
+                    listView.setAdapter(listViewAdapter);
+                }
+                else {
+                    listViewAdapter = new ArrayAdapter(getActivity(), R.layout.list_item, R.id.txtitem, values);
+                    listView.setAdapter(listViewAdapter);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                buscarelement(s.toString());
+
+
             }
         });
 
@@ -102,20 +114,6 @@ public class titol extends Fragment {
         return myView;
     }
 
-    public void buscarelement(String textabuscar){
-
-        Log.v("9", textabuscar);
-        int i = 0;
-        String nomactor;
-        while(i < values.size()) {
-            nomactor =  values.get(i).getProtagonist();
-            film = values.get(i);
-            Log.v("9",nomactor.toLowerCase());
-            if (!(nomactor.toLowerCase().contains(textabuscar.toLowerCase()))) values.remove(film);
-            ++i;
-        }
-        listViewAdapter.notifyDataSetChanged();
-    }
 
     @Override
     public void onResume() {
@@ -158,7 +156,6 @@ public class titol extends Fragment {
             case 0:
                 AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(myView.getContext(),R.style.AlertDialogCustom));
                 builder.setTitle("CRÍTICA DE '" + title+"'");
-              //  LayoutInflater layout = LayoutInflater.from(getActivity());
 
                 LinearLayout layout = new LinearLayout(getActivity());
                 layout.setOrientation(LinearLayout.VERTICAL);
@@ -166,13 +163,7 @@ public class titol extends Fragment {
 
                 num.setInputType(InputType.TYPE_CLASS_NUMBER);
                 num.setText(String.valueOf(film2.getCritics_rate()));
-              //  input6.setHint("Puntuació de l'1 al 10");
                 layout.addView(num);
-
-                /*final View vista = layout.inflate(R.layout.critica,null);
-                final RatingBar rater = (RatingBar) vista.findViewById(R.id.rating);
-                rater.setNumStars(10);
-                rater.setRating(film2.getCritics_rate());*/
                 builder.setView(layout);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
